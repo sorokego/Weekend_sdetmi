@@ -1,0 +1,12 @@
+.swiper-container {
+    overflow-y: visible;
+    overflow-x: hidden;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: 0;
+}
