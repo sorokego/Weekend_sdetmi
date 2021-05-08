@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TagItem from "./TagItem";
-// import { ReactComponent as UpArrow } from "../header/icons/up.svg";
-// import { ReactComponent as DownArrow } from "../header/icons/down.svg";
+import UpArrow from "../header/icons/UpArrow";
+import DownArrow from "../header/icons/DownArrow";
 
 const TagBlock = ({ item: { name, color, Tags } }) => {
     const [visibleTags, setVisibleTags] = useState(true);

@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from "react";
 import { useRouter } from "next/router";
-// import "./Header.css";
 import { Collapse } from "react-collapse";
 import Menu from "../Menu";
 import logo from "./images/logo.png";
@@ -11,11 +10,11 @@ import igIcon from "./icons/ig.svg";
 import vkIcon from "./icons/vk.svg";
 import fbIcon from "./icons/fb.svg";
 import okIcon from "./icons/ok.svg";
-// import { ReactComponent as UpArrow } from "./icons/up.svg";
-// import { ReactComponent as DownArrow } from "./icons/down.svg";
-// import { ReactComponent as Close } from "./icons/close.svg";
-// import { useQuery } from "react-query";
-// import { getCategories } from "../../helpers/requests";
+import UpArrow from "./icons/UpArrow";
+import DownArrow from "../header/icons/DownArrow";
+import CloseIcon from "../header/icons/CloseIcon";
+import { useQuery } from "react-query";
+import { getCategories } from "../../helpers/requests";
 
 const Header = ({ city, setCity }) => {
     const router = useRouter();
@@ -29,9 +28,7 @@ const Header = ({ city, setCity }) => {
         setSearchValue("");
     };
 
-    // const { data: categories } = useQuery("categories", getCategories);
-
-    const categories = ["Тест", "Тест2"];
+    const { data: categories } = useQuery("categories", getCategories);
 
     const accessibilityIds = {
         button: "accessible-marker",
@@ -105,11 +102,10 @@ const Header = ({ city, setCity }) => {
                         />
                     </button>
                     <Menu active={menuActive} setActive={setMenuActive}>
-                        {/* <Close
+                        <CloseIcon
                             onClick={() => setMenuActive(false)}
                             className="right-3 top-2 absolute"
-                        /> */}
-                        <p>CloseArrow</p>
+                        />
                         <ul className="list-none text-left p-5 pb-0">
                             <li>
                                 <button
@@ -121,11 +117,9 @@ const Header = ({ city, setCity }) => {
                                 >
                                     {city ? city : "Выбрать город"}
                                     {isButton2CollapseOpen ? (
-                                        // <UpArrow />
-                                        <p>UpArrow</p>
+                                        <UpArrow />
                                     ) : (
-                                        // <DownArrow />
-                                        <p>DownArrow</p>
+                                        <DownArrow />
                                     )}
                                 </button>
                                 <Collapse isOpened={isButton2CollapseOpen}>
@@ -167,11 +161,9 @@ const Header = ({ city, setCity }) => {
                                 >
                                     Категории
                                     {isButton3CollapseOpen ? (
-                                        // <UpArrow />
-                                        <p>UpArrow</p>
+                                        <UpArrow />
                                     ) : (
-                                        // <DownArrow />
-                                        <p>DownArrow</p>
+                                        <DownArrow />
                                     )}
                                 </button>
                                 <Collapse isOpened={isButton3CollapseOpen}>
@@ -246,11 +238,10 @@ const Header = ({ city, setCity }) => {
                                 placeholder="Поиск"
                                 autoFocus={isButtonCollapseOpen}
                             />
-                            {/* <Close
+                            <CloseIcon
                                 className="right-3 top-2 absolute"
                                 onClick={() => setSearchValue("")}
-                            /> */}
-                            <p>CloseArrow</p>
+                            />
                         </form>
                     </div>
                 </Collapse>
