@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { Collapse } from "react-collapse";
 import Menu from "../Menu";
@@ -102,10 +103,13 @@ const Header = ({ city, setCity }) => {
                         />
                     </button>
                     <Menu active={menuActive} setActive={setMenuActive}>
-                        <CloseIcon
+                        <button
+                            className="outline-none right-3 top-2 absolute"
                             onClick={() => setMenuActive(false)}
-                            className="right-3 top-2 absolute"
-                        />
+                        >
+                            <CloseIcon />
+                        </button>
+
                         <ul className="list-none text-left p-5 pb-0">
                             <li>
                                 <button
@@ -149,7 +153,9 @@ const Header = ({ city, setCity }) => {
                                 </Collapse>
                             </li>
                             <li>
-                                <a href="/">Главная</a>
+                                <Link href="/">
+                                    <a>Главная</a>
+                                </Link>
                             </li>
                             <li>
                                 <button
@@ -175,11 +181,11 @@ const Header = ({ city, setCity }) => {
                                             (item) =>
                                                 item.isActive && (
                                                     <li key={item.id}>
-                                                        <a
+                                                        <Link
                                                             href={`/categories/${item.id}`}
                                                         >
-                                                            {item.name}
-                                                        </a>
+                                                            <a>{item.name}</a>
+                                                        </Link>
                                                     </li>
                                                 )
                                         )}

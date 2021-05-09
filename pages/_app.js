@@ -7,7 +7,6 @@ import Header from "../src/components/header/Header";
 import Modal from "../src/components/Modal";
 import PopUp from "../src/components/PopUp";
 import "tailwindcss/tailwind.css";
-import "../styles/globals.css";
 
 const queryClient = new QueryClient();
 
@@ -54,7 +53,11 @@ function MyApp({ Component, pageProps }) {
                 <Modal active={modalActive} setActive={setModalActive}>
                     <PopUp setActive={setModalActive} setCity={setCity} />
                 </Modal>
-                <Component {...pageProps} />
+                <Component
+                    toggleFavorites={toggleFavorites}
+                    favorites={favorites}
+                    {...pageProps}
+                />
                 <Footer />
 
                 <ReactQueryDevtools initialIsOpen={false} />
