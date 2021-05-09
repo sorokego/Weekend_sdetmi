@@ -2,7 +2,9 @@ import React from "react";
 import { baseUrl } from "../../constants";
 import Link from "next/link";
 
-const CategorySectionItem = ({ item: { id, name, image, isActive } }) => {
+const CategorySectionItem = ({ item }) => {
+    const { id, name, image, isActive } = item;
+
     return isActive ? (
         <Link
             href={`/categories/${id}`}

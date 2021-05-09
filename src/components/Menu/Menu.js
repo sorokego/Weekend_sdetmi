@@ -1,13 +1,16 @@
-// import "./menu.css";
+import styles from "./Menu.module.css";
+import cn from "classnames";
 
 const Menu = ({ active, setActive, children }) => {
     return (
         <div
-            className={active ? "menu active" : "menu"}
+            className={cn(styles.menu, { [`${styles.active}`]: active })}
             onClick={() => setActive(false)}
         >
             <div
-                className={active ? "menu__content active" : "menu__content"}
+                className={cn(styles.menu__content, {
+                    [`${styles.active}`]: active,
+                })}
                 onClick={(e) => e.stopPropagation()}
             >
                 {children}
