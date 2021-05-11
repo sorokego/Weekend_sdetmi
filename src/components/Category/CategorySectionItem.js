@@ -3,7 +3,8 @@ import { baseUrl } from "../../constants";
 import Link from "next/link";
 
 const CategorySectionItem = ({ item }) => {
-    const { id, name, image, isActive } = item;
+    const { _id: id, name, image, isActive } = item;
+    console.log(item);
 
     return isActive ? (
         <Link
@@ -13,10 +14,15 @@ const CategorySectionItem = ({ item }) => {
             <a>
                 <img
                     alt={image}
-                    src={`${baseUrl}/images/${image}`}
-                    className="svg-categorySection-small s:svg-categorySection-big mb-2.5 rounded-xl"
+                    src={image}
+                    // className="svg-categorySection-small s:svg-categorySection-big mb-2.5 rounded-xl"
+                    width="100"
+                    height="100"
                 />
-                <h2 className="text-white w-full text-lg md:text-base font-medium">
+                <h2
+                    // className="text-white w-full text-lg md:text-base font-medium"
+                    className="w-full text-lg md:text-base font-medium"
+                >
                     {name}
                 </h2>
             </a>

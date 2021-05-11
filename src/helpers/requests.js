@@ -9,7 +9,10 @@ const getData = async (url) => {
     }).then((data) =>
         data
             .json()
-            .then((data) => data)
+            .then((data) => {
+                console.log(data);
+                return data;
+            })
             .catch((err) => console.log(err))
     );
 };
