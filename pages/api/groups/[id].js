@@ -1,12 +1,12 @@
 import connectDB from "../../../src/middlewares/mongodb";
-import Category from "../../../src/models/categories";
+import Group from "../../../src/models/groups";
 
 const handler = async (req, res) => {
     if (req.method === "GET") {
         const { id } = req.query;
-        const categories = await Category.findById(id);
+        const groups = await Group.findById(id);
 
-        res.status(200).json(categories);
+        res.status(200).json(groups);
     } else {
         res.status(422).send("req_method_not_supported");
     }
