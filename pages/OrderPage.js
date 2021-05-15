@@ -1,15 +1,16 @@
 import React, { useCallback, useState, useLayoutEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { postOrder } from "../helpers/requests";
-import Order from "../components/Order/Order";
-import Modal from "../components/Modal";
+import { postOrder } from "../src/helpers/requests";
+import Order from "../src/components/Order/Order";
+import Modal from "../src/components/Modal";
+import { useRouter } from "next/router";
 import { Helmet } from "react-helmet";
 
 const OrderPage = () => {
-  const history = useHistory();
   const [response, setResponse] = useState({});
   const [active, setActive] = useState(false);
   const [message, setMessage] = useState("");
+
+  const router = useRouter();
 
   useLayoutEffect(() => {
     if (response.error) {
@@ -30,14 +31,14 @@ const OrderPage = () => {
       const result = await postOrder(newData, id);
       setResponse(result);
     },
-    [response],
+    [response]
   );
 
   const handleSetActiveModal = useCallback(
     (state) => {
       setActive(state);
     },
-    [response],
+    [response]
   );
 
   return (
@@ -45,7 +46,7 @@ const OrderPage = () => {
       <Helmet>
         <title>Мероприятия_форма заявки</title>
       </Helmet>
-      <Order postOrder={handlePostOrder}/>
+      <Order postOrder={handlePostOrder} />
       <Modal active={active} setActive={handleSetActiveModal}>
         <div className="max-w-60 py-5 text-center text-base font-medium">
           {message === "Заявка успешно создана"
@@ -59,7 +60,7 @@ const OrderPage = () => {
             onClick={() => {
               setActive(false);
               setMessage("");
-              history.goBack();
+              router.back();
             }}
           >
             Ок

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./style.css";
+import "./Order.module.css";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { useRouter } from "next/router";
 import { getServiceById } from "../../helpers/requests";
 import Input from "./Input";
 import IconCheckbox from "./icons/IconCheckbox.js";
@@ -10,7 +10,9 @@ import IconCheckbox from "./icons/IconCheckbox.js";
 const Order = ({ postOrder }) => {
   const { register, handleSubmit, errors, trigger } = useForm();
   const [checked, setChecked] = useState(true);
-  const { id } = useParams();
+
+  const router = useRouter();
+  const { id } = router.query;
 
   const { data: service } = useQuery(["service", id], () => getServiceById(id));
 
@@ -110,7 +112,10 @@ const Order = ({ postOrder }) => {
               title="Дата и время"
               error={errors.date}
               required={{
-                required: Addresses.length !== 0 ? "Данное поле обязательно для заполнения" : false,
+                required:
+                  Addresses.length !== 0
+                    ? "Данное поле обязательно для заполнения"
+                    : false,
                 // minLength: {
                 //   value: 5,
                 //   message: "Вы не указали время и дату",
@@ -178,9 +183,9 @@ const Order = ({ postOrder }) => {
       </form>
       <div className="order-checkbox">
         <label htmlFor="checkbox" onClick={handleCheck}>
-          <IconCheckbox checked={checked}/>
+          <IconCheckbox checked={checked} />
         </label>
-        <input type="checkbox" id="checkbox" className="hidden"/>
+        <input type="checkbox" id="checkbox" className="hidden" />
         <span className="order-checkbox__text ml-1">
           Ваши данные защищены. Нажимая на кнопку, вы даете согласие на
           обработку персональных данных и соглашаетесь с политикой
