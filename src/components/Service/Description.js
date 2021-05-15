@@ -1,7 +1,7 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import "./description.css";
+import "./Description.module.css";
 import FeedbackItem from "./FeedbackItem";
 import { feedbacks } from "./feedbacks";
 
@@ -20,7 +20,9 @@ const Description = ({ service }) => {
           <h2>{description}</h2>
         </TabPanel>
         <TabPanel>
-          {feedbacks.map((item, idx) => (<FeedbackItem item={item} key={idx}/>))}
+          {feedbacks.map((item, idx) => (
+            <FeedbackItem item={item} key={idx} />
+          ))}
         </TabPanel>
       </Tabs>
     </div>
