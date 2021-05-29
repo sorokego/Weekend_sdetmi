@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <React.StrictMode>
             <QueryClientProvider client={queryClient}>
-                <Header city={city} setCity={setCity} />
+                <Header city={city} setCity={setCity} favorites={favorites} />
                 <Modal active={modalActive} setActive={setModalActive}>
                     <PopUp setActive={setModalActive} setCity={setCity} />
                 </Modal>
