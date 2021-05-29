@@ -18,6 +18,10 @@ export const mockCategory = [
   },
   {
     img: img4,
+    name: "День рождения ребенка!!!",
+  },
+  {
+    img: img4,
     name: "День рождения ребенка",
   },
 ];
