@@ -20,7 +20,7 @@ const PopUp = ({ setActive, setCity }) => {
             <div className="flex items-center">
                 <IconMap />
                 <p className="mb-5 mt-1 text-lg font-semibold text-center">
-                    Ваш город Екатеринбург?
+                    Ваш город Тюмень?
                 </p>
             </div>
             {!ChoiseCityComponent ? (
@@ -31,7 +31,7 @@ const PopUp = ({ setActive, setCity }) => {
                         }
                         onClick={() => {
                             setActive(false);
-                            setCity("Екатеринбург");
+                            setCity("Тюмень");
                         }}
                     >
                         Да
