@@ -1,13 +1,11 @@
 import React from "react";
-import MainImg from "./MainImg";
-import RectLeft from "../../images/icons/RectLeft";
-import RectRight from "../../images/icons/RectRight";
+import MainImg from './MainImg';
 
 const About = () => {
   return (
-    <div className="min-w-320 s:w-full sm:w-full md:w-full xl:w-full mx-auto flex flex-col text-center mb-7">
-      <h1>Куда сходить с ребёнком в выходной?</h1>
-      <img src="./Rectangle_583.png" alt="imgAbout" />
+    <div className="w-80 s:w-full sm:w-full md:w-full xl:w-full mx-auto flex flex-col text-center">
+      <h1 className="sans_mon text-3xl font-bold my-3 mx-6 text-Orange">Куда сходить<br /> с ребёнком<br /> в выходной?</h1>
+    <MainImg />
     </div>
   );
 };
