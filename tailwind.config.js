@@ -5,10 +5,16 @@ module.exports = {
     ],
     darkMode: false, // or 'media' or 'class'
     theme: {
-        extend: {},
+        extend: {
+            textColor: (theme) => ({
+                Orange: "#FF9F39",
+              }),
+        },
     },
     variants: {
-        extend: {},
+        extend: {
+            textColor: ["active"],
+        },
     },
     plugins: [],
 };
