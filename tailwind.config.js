@@ -8,7 +8,11 @@ module.exports = {
         extend: {
             textColor: (theme) => ({
                 Orange: "#FF9F39",
-              }),
+            }),
+        },
+        fontFamily: {
+            sans: ["Montserrat", "system-ui"],
+            alt: ["Montserrat Alternates", "system-ui"],
         },
     },
     variants: {
