@@ -17,7 +17,7 @@ const MainPage = () => {
                 </title>
                 <meta
                     name="description"
-                    content="Отдых с детьми может быть разный"
+                    content="Куда сходить с ребёнком в выходной"
                 />
             </Head>
             <About />
