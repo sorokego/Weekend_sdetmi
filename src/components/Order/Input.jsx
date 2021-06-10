@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import "./Order.module.css";
 
 const placeholderDict = {
   name: {
@@ -37,15 +37,8 @@ const placeholderDict = {
 };
 
 const Input = (props) => {
-  const {
-    name,
-    defaultValue,
-    register,
-    title,
-    required,
-    trigger,
-    error,
-  } = props;
+  const { name, defaultValue, register, title, required, trigger, error } =
+    props;
 
   return (
     <label className="flex flex-col">
@@ -64,9 +57,7 @@ const Input = (props) => {
             : "box-border rounded-10px border order__input"
         }
       />
-      <span className="order-label__text error__text">
-                {error?.message}
-            </span>
+      <span className="order-label__text error__text">{error?.message}</span>
     </label>
   );
 };

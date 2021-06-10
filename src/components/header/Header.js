@@ -5,7 +5,8 @@ import { Collapse } from "react-collapse";
 import Menu from "../Menu";
 import logo from "./images/logo.png";
 import searchIcon from "./icons/search.svg";
-import favoriteIcon from "./icons/heart.svg";
+import favoriteIconEmpty from "./icons/heart.svg";
+import favoriteIconFull from "./icons/heartFull.svg";
 import menuIcon from "./icons/bars.svg";
 import igIcon from "./icons/ig.svg";
 import vkIcon from "./icons/vk.svg";
@@ -17,7 +18,7 @@ import CloseIcon from "../header/icons/CloseIcon";
 import { useQuery } from "react-query";
 import { getCategories } from "../../helpers/requests";
 
-const Header = ({ city, setCity }) => {
+const Header = ({ city, setCity, favorites }) => {
     const router = useRouter();
     const [menuActive, setMenuActive] = useState(false);
     const [searchValue, setSearchValue] = useState("");
@@ -85,7 +86,7 @@ const Header = ({ city, setCity }) => {
                     </button>
                     <a href={"/favorites"} className="">
                         <img
-                            src={favoriteIcon}
+                            src={favorites.length !== 0  ? favoriteIconFull : favoriteIconEmpty}
                             alt="favorite"
                             className="ml-4 inline-flex"
                             style={{ width: 20 }}
@@ -134,20 +135,20 @@ const Header = ({ city, setCity }) => {
                                         <li
                                             className="ml-2 cursor-pointer"
                                             onClick={() => {
-                                                setCity("Москва");
+                                                setCity("Тюмень");
                                                 setIsButton2CollapseOpen(false);
                                             }}
                                         >
-                                            Москва
+                                            Тюмень
                                         </li>
                                         <li
                                             className="ml-2 cursor-pointer"
                                             onClick={() => {
-                                                setCity("Екатеринбург");
+                                                setCity("Новосибирск");
                                                 setIsButton2CollapseOpen(false);
                                             }}
                                         >
-                                            Екатеринбург
+                                            Новосибирск
                                         </li>
                                     </ul>
                                 </Collapse>
