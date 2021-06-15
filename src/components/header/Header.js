@@ -86,7 +86,11 @@ const Header = ({ city, setCity, favorites }) => {
                     </button>
                     <a href={"/favorites"} className="">
                         <img
-                            src={favorites.length !== 0  ? favoriteIconFull : favoriteIconEmpty}
+                            src={
+                                favorites.length !== 0
+                                    ? favoriteIconFull
+                                    : favoriteIconEmpty
+                            }
                             alt="favorite"
                             className="ml-4 inline-flex"
                             style={{ width: 20 }}
@@ -181,7 +185,7 @@ const Header = ({ city, setCity, favorites }) => {
                                         {categories?.map(
                                             (item) =>
                                                 item.isActive && (
-                                                    <li key={item.id}>
+                                                    <li key={item._id}>
                                                         <Link
                                                             href={`/categories/${item.id}`}
                                                         >

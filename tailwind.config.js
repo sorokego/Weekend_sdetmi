@@ -9,6 +9,11 @@ module.exports = {
             textColor: (theme) => ({
                 Orange: "#FF9F39",
                 Gray: "#212121",
+                White: "#FFFFFF",
+                Green: "#68CFBE",
+            }),
+            backgroundColor: (theme) => ({
+                primary: "#68CFBE",
             }),
         },
         fontFamily: {

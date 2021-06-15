@@ -32,6 +32,8 @@ const postData = async (url, data) => {
 export const getCategories = () => getData(`${baseUrl}/api/categories`);
 export const getCategoryById = (id) =>
     getData(`${baseUrl}/api/categories/${id}`);
+export const getCategoryServicesById = (id) =>
+    getData(`${baseUrl}/api/services?categoryId=${id}`);
 export const getSubCategories = () => getData(`${baseUrl}/api/subcategories`);
 export const getSubCategoryById = (id) =>
     getData(`${baseUrl}/api/subcategories/${id}`);
