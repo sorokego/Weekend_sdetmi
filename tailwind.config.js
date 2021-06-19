@@ -15,6 +15,15 @@ module.exports = {
             backgroundColor: (theme) => ({
                 primary: "#68CFBE",
             }),
+            backgroundColor: (theme) => ({
+                green: "#68CFBE",
+                footer: "#E6FAF6"
+
+            }),
+            footerBackgroundColor: (theme) => ({
+                Green: "#E6FAF6",
+
+            }),
         },
         fontFamily: {
             sans: ["Montserrat", "system-ui"],
@@ -24,6 +33,7 @@ module.exports = {
     variants: {
         extend: {
             textColor: ["active"],
+            backgroundColor: ["active"],
         },
     },
     plugins: [],
