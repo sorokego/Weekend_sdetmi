@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import {
     getCategoryById,
-    getServices,
+    getCategoryServicesById,
     getSubCategoriesFull,
 } from "../../src/helpers/requests";
 import Cookies from "js-cookie";
@@ -19,25 +19,33 @@ const CategoryPage = ({ toggleFavorites, favorites }) => {
     const [toggle, setToggle] = useState(false);
     const [subCatId, setSubCatId] = useState(null);
 
-    const { data: category } = useQuery(["category", id], () =>
-        getCategoryById(id)
+    useEffect(() => {
+        console.log("ID: ", id);
+    }, [id]);
+
+    const { data: category } = useQuery(
+        ["category", id],
+        () => getCategoryById(id),
+        { enabled: !!id }
     );
 
-    const subCategoriesIds = category?.services?.map(
-        (item) => item.SubcategoryId
+    const { data: services } = useQuery(
+        ["services", id],
+        () => getCategoryServicesById(id),
+        { enabled: !!id }
     );
+
+    const subCategoriesIds = services?.map((item) => item.subcategoryId);
     const uniqSubCategoriesIds = Array.from(new Set(subCategoriesIds));
 
     const { data: subCategories } = useQuery(
         "subCategoriesFull",
         () => getSubCategoriesFull(uniqSubCategoriesIds),
-        { enabled: !!subCategoriesIds }
+        { enabled: !!subCategoriesIds && !!id }
     );
 
-    const { data: services } = useQuery("services", () => getServices());
-
     const filterForSubCategory = (item) => {
-        const filtered = services.filter((el) => el.SubcategoryId === item.id);
+        const filtered = services.filter((el) => el.subcategoryId === item.id);
         setFilteredCategory(filtered);
         setSubCatId(item.id);
         subCatId === item.id ? setToggle(!toggle) : setToggle(true);
@@ -62,18 +70,23 @@ const CategoryPage = ({ toggleFavorites, favorites }) => {
                     content="Все детские развлечения. Дома с ребенком"
                 />
             </Head>
-            <SubCategories
-                subCategories={subCategories}
-                filterSubCategories={filterForSubCategory}
-            />
-            <Category
-                category={category}
-                filteredCategory={filteredCategory}
-                toggle={toggle}
-                toggleFavorites={toggleFavorites}
-                favorites={favorites}
-                redirectToService={redirectToService}
-            />
+            {id ? (
+                <>
+                    <SubCategories
+                        subCategories={subCategories}
+                        filterSubCategories={filterForSubCategory}
+                    />
+                    <Category
+                        category={category}
+                        services={services}
+                        filteredCategory={filteredCategory}
+                        toggle={toggle}
+                        toggleFavorites={toggleFavorites}
+                        favorites={favorites}
+                        redirectToService={redirectToService}
+                    />
+                </>
+            ) : null}
         </>
     );
 };
