@@ -8,6 +8,7 @@ module.exports = {
         extend: {
             textColor: (theme) => ({
                 Orange: "#FF9F39",
+                Gray: "#212121",
             }),
             backgroundColor: (theme) => ({
                 green: "#68CFBE",
