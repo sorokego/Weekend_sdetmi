@@ -22,7 +22,7 @@ const MainPage = () => {
             </Head>
             <About />
             <CategorySection />
-            <Tags groups={groups} />
+            {/*<Tags groups={groups} />*/}
         </div>
     );
 };
